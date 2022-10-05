@@ -10,11 +10,11 @@ public class Calculation {
 		LinkedList<Object> terms = new LinkedList<Object>();
 		if (validation.check(problem)) {						//Validating the problem
 			terms = expression.toTerms(problem);				//turning the problem into expression
-			double ans = solve(terms);
-			if ((int) ans == ans)								//turning the double value into integer
-				System.out.println((int) ans);
+			double result = solve(terms);
+			if ((int) result == result)								//turning the double value into integer
+				System.out.println((int) result);
 			else
-				System.out.println(ans);
+				System.out.println(result);
 		} else {
 			System.out.print("Invalid problem.. try again");
 		}
@@ -22,79 +22,79 @@ public class Calculation {
 	}
 
 	private Double solve(List<Object> terms) {
-		int index, j;
-		Double ans;
+		int index, end;
+		Double result;
 		List<Object> innerTerms = new LinkedList<Object>();
 		while (terms.size() > 1) {
 																//Ordering as per precedence
 			if (terms.contains("(")) {							//1-> Brackets
 				index = terms.indexOf("(");
-				j = terms.indexOf(")");
-				innerTerms = terms.subList(index + 1, j + 1);
+				end = terms.indexOf(")");
+				innerTerms = terms.subList(index + 1, end + 1);
 				if (innerTerms.contains("(")) {
 					index = innerTerms.indexOf("(");
-					j = innerTerms.indexOf(")");
-					ans = solve(innerTerms.subList(index + 1, j));
+					end = innerTerms.indexOf(")");
+					result = solve(innerTerms.subList(index + 1, end));
 					innerTerms.remove("(");
 					innerTerms.remove(")");
 				} else {
-					ans = solve(terms.subList(index + 1, j));
+					result = solve(terms.subList(index + 1, end));
 					terms.remove("(");
 					terms.remove(")");
 				}
 
 			} else if (terms.contains("cbrt")) {						//2-> Cube root
 				index = terms.indexOf("cbrt");
-				ans = Math.cbrt(getValue(index + 1, terms));
-				toSimplify(terms, index + 1, 2, ans);
+				result = Math.cbrt(getValue(index + 1, terms));
+				toSimplify(terms, index + 1, 2, result);
 			} else if (terms.contains("sqrt")) {						//3-> Square root
 				index = terms.indexOf("sqrt");
-				ans = Math.sqrt(getValue(index + 1, terms));
-				toSimplify(terms, index + 1, 2, ans);
+				result = Math.sqrt(getValue(index + 1, terms));
+				toSimplify(terms, index + 1, 2, result);
 			} else if (terms.contains("log")) {							//4-> log
 				index = terms.indexOf("log");
-				ans = Math.log10(getValue(index + 1, terms));
-				toSimplify(terms, index + 1, 2, ans);
+				result = Math.log10(getValue(index + 1, terms));
+				toSimplify(terms, index + 1, 2, result);
 			} else if (terms.contains("sin")) {							//5-> sin
 				index = terms.indexOf("sin");
-				ans = Math.sin(getValue(index + 1, terms));
-				toSimplify(terms, index + 1, 2, ans);
+				result = Math.sin(getValue(index + 1, terms));
+				toSimplify(terms, index + 1, 2, result);
 			} else if (terms.contains("cos")) {							//6-> cos
 				index = terms.indexOf("cos");
-				ans = Math.cos(getValue(index + 1, terms));
-				toSimplify(terms, index + 1, 2, ans);
+				result = Math.cos(getValue(index + 1, terms));
+				toSimplify(terms, index + 1, 2, result);
 			} else if (terms.contains("tan")) {							//7-> tan
 				index = terms.indexOf("tan");
-				ans = Math.tan(getValue(index + 1, terms));
-				toSimplify(terms, index + 1, 2, ans);
+				result = Math.tan(getValue(index + 1, terms));
+				toSimplify(terms, index + 1, 2, result);
 			} else if (terms.contains("%")) {							//8-> percentage
 				index = terms.indexOf("%");
-				ans = (getValue(index - 1, terms)) / 100;
-				toSimplify(terms, index, 2, ans);
+				result = (getValue(index - 1, terms)) / 100;
+				toSimplify(terms, index, 2, result);
 			} else if (terms.contains("!")) {							//9-> Factorial
 				index = terms.indexOf("!");
-				ans = factorial(getValue(index - 1, terms));
-				toSimplify(terms, index, 2, ans);
+				result = factorial(getValue(index - 1, terms));
+				toSimplify(terms, index, 2, result);
 			} else if (terms.contains("^")) {							//10-> Power
 				index = terms.indexOf("^");
-				ans = Math.pow(getValue(index - 1, terms), getValue(index + 1, terms));
-				toSimplify(terms, index, 3, ans);
+				result = Math.pow(getValue(index - 1, terms), getValue(index + 1, terms));
+				toSimplify(terms, index, 3, result);
 			} else if (terms.contains("/")) {							//11-> Divide
 				index = terms.indexOf("/");
-				ans = getValue(index - 1, terms) / getValue(index + 1, terms);
-				toSimplify(terms, index, 3, ans);
+				result = getValue(index - 1, terms) / getValue(index + 1, terms);
+				toSimplify(terms, index, 3, result);
 			} else if (terms.contains("*")) {							//12-> Multiplication
 				index = terms.indexOf("*");
-				ans = getValue(index - 1, terms) * getValue(index + 1, terms);
-				toSimplify(terms, index, 3, ans);
+				result = getValue(index - 1, terms) * getValue(index + 1, terms);
+				toSimplify(terms, index, 3, result);
 			} else if (terms.contains("-")) {							//13-> Subtraction
 				index = terms.indexOf("-");
-				ans = getValue(index - 1, terms) - getValue(index + 1, terms);
-				toSimplify(terms, index, 3, ans);
+				result = getValue(index - 1, terms) - getValue(index + 1, terms);
+				toSimplify(terms, index, 3, result);
 			} else if (terms.contains("+")) {							//14-> Addition
 				index = terms.indexOf("+");
-				ans = getValue(index - 1, terms) + getValue(index + 1, terms);
-				toSimplify(terms, index, 3, ans);
+				result = getValue(index - 1, terms) + getValue(index + 1, terms);
+				toSimplify(terms, index, 3, result);
 			}
 		}
 		return (Double) terms.get(0);
@@ -105,19 +105,19 @@ public class Calculation {
 		return Double.valueOf((terms.get(index)).toString());
 	}
 
-	private Double factorial(double n) {
-		double a = 1.0;
-		while (n > 0) {
-			a *= n;
-			n--;
+	private Double factorial(double number) {
+		double result = 1.0;
+		while (number > 0) {
+			result *= number;
+			number--;
 		}
-		return a;
+		return result;
 	}
 
-	private void toSimplify(List<Object> a, int i, int n, Double ans) {			//eliminating solved terms
-		a.add(i - 1, ans);
-		while (n-- > 0) {
-			a.remove(i);
+	private void toSimplify(List<Object> terms, int index, int count, Double result) {			//eliminating solved terms
+		terms.add(index - 1, result);
+		while (count-- > 0) {
+			terms.remove(index);
 		}
 
 	}

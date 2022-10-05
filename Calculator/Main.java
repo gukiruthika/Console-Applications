@@ -31,6 +31,9 @@ public class Main {
 				catch (StringIndexOutOfBoundsException e) {
 					System.out.print("Problem has no terms.. try again");
 				}
+				catch (IndexOutOfBoundsException e) {
+					System.out.print("Invalid problem.. try again");
+				}
 				catch (ClassCastException e) {
 					System.out.print("Invalid problem.. try again");
 				}
