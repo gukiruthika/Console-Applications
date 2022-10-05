@@ -50,7 +50,7 @@ public class Database {
 					employeeList.add(employee);
 				}
 				EmployeeDetailsDatabase.getInstance().insertEmployee(employeeList);
-			} else if(tableName.equals("attendance")){
+			} else if (tableName.equals("attendance")) {
 				Attendance attendance;
 				List<Attendance> attendanceList = new ArrayList<Attendance>();
 				while (resultSet.next()) {
@@ -62,8 +62,7 @@ public class Database {
 					attendanceList.add(attendance);
 				}
 				EmployeeDetailsDatabase.getInstance().insertAttendance(attendanceList);
-			}
-			else if(tableName.equals("salarydetails")){
+			} else if (tableName.equals("salarydetails")) {
 				SalaryDetails salaryDetails;
 				List<SalaryDetails> salaryDetailsList = new ArrayList<SalaryDetails>();
 				while (resultSet.next()) {
@@ -79,11 +78,6 @@ public class Database {
 				}
 				EmployeeDetailsDatabase.getInstance().insertSalaryDetails(salaryDetailsList);
 			}
-			else {
-				if (resultSet.next()) {
-//					resultSet.getInt(0);
-				}
-			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -91,22 +85,5 @@ public class Database {
 		}
 
 	}
-	
-//	public int getData(String query) {
-//		
-//		try {
-//			ResultSet resultSet = getConnection().executeQuery(query);
-////			if (tableName.equals("employeeDetails")) {
-//				while (resultSet.next()) {
-//					return resultSet.getInt("count");
-//				}
-//				
-//		} catch (ClassNotFoundException e) {
-//			e.printStackTrace();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return 0;
-//	}
 
 }
