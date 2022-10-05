@@ -9,7 +9,7 @@ public class EmployeeDetailsDatabase {
 	private List<Employee> employeeList;
 	private List<SalaryDetails> salaryDetailsList;
 	private List<Attendance> attendanceList;
-	Database database = new Database();
+	private Database database = new Database();
 
 	EmployeeDetailsDatabase() {
 		employeeList = new ArrayList<Employee>();
@@ -34,7 +34,7 @@ public class EmployeeDetailsDatabase {
 		database.setData("Insert into employee.employeedetails values ('" + employee.getEmployeeId() + "' , '"
 				+ employee.getEmployeeName() + "' , '" + employee.getDateOfBirth() + "' , '" + employee.getDesignation()
 				+ "' , " + employee.getAadharNumber() + " , " + employee.getPhoneNumber() + " , '"
-				+ employee.getEmailId() + "' , "+ employee.getSalary() +")");
+				+ employee.getEmailId() + "' , " + employee.getSalary() + ")");
 		this.employeeList.add(employee);
 	}
 
@@ -53,24 +53,6 @@ public class EmployeeDetailsDatabase {
 				employee = eachEmployee;
 		}
 		return employee;
-	}
-
-	public SalaryDetails getSalaryDetails(String employeeId) {
-		SalaryDetails salaryDetails = new SalaryDetails();
-		for (SalaryDetails eachSalaryDetails : salaryDetailsList) {
-			if (employeeId.equals(eachSalaryDetails.getEmployeeId()))
-				salaryDetails = eachSalaryDetails;
-		}
-		return salaryDetails;
-	}
-
-	public Attendance getAttendance(String employeeId) {
-		Attendance attendance = new Attendance();
-		for (Attendance eachAttendance : attendanceList) {
-			if (employeeId.equals(eachAttendance.getEmployeeId()))
-				attendance = eachAttendance;
-		}
-		return attendance;
 	}
 
 	public List<Employee> getEmployeeList() {
@@ -97,6 +79,15 @@ public class EmployeeDetailsDatabase {
 				+ attendance.getEmployeeId() + "'");
 	}
 
+	public Attendance getAttendance(String employeeId) {
+		Attendance attendance = new Attendance();
+		for (Attendance eachAttendance : attendanceList) {
+			if (employeeId.equals(eachAttendance.getEmployeeId()))
+				attendance = eachAttendance;
+		}
+		return attendance;
+	}
+
 	public List<Attendance> getAttendanceList() {
 		return attendanceList;
 	}
@@ -112,6 +103,15 @@ public class EmployeeDetailsDatabase {
 				+ salaryDetails.getYear() + ", '" + salaryDetails.getEmployeeId() + "' , '"
 				+ salaryDetails.getEmployeeName() + "' , " + salaryDetails.getNetSalary() + " , "
 				+ salaryDetails.getNumberOfWorkingDays() + " , " + salaryDetails.getNumberOfDaysPresent() + " )");
+	}
+
+	public SalaryDetails getSalaryDetails(String employeeId) {
+		SalaryDetails salaryDetails = new SalaryDetails();
+		for (SalaryDetails eachSalaryDetails : salaryDetailsList) {
+			if (employeeId.equals(eachSalaryDetails.getEmployeeId()))
+				salaryDetails = eachSalaryDetails;
+		}
+		return salaryDetails;
 	}
 
 	public List<SalaryDetails> getSalaryDetailsList() {
