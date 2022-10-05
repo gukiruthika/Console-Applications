@@ -1,20 +1,12 @@
 package View;
 
 import java.util.List;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import controller.InputController;
 import controller.SalaryController;
-import model.Attendance;
-import model.Database;
-import model.Employee;
 import model.EmployeeDetailsDatabase;
 import model.SalaryDetails;
 
 public class ManageSalary {
-	Scanner scan = new Scanner(System.in);
 	private SalaryController salaryController;
 	private InputController inputController;
 	
