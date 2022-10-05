@@ -6,8 +6,8 @@ import model.Attendance;
 import model.EmployeeDetailsDatabase;
 
 public class AttendanceController {
-	Attendance attendance = new Attendance();
-	List<Attendance> attendanceList = EmployeeDetailsDatabase.getInstance().getAttendanceList();
+	private Attendance attendance = new Attendance();
+	private List<Attendance> attendanceList = EmployeeDetailsDatabase.getInstance().getAttendanceList();
 
 	public void toCheckIn(String employeeId, int month, int year) {
 		boolean check = true;
@@ -28,6 +28,22 @@ public class AttendanceController {
 			attendance.setEmployeeId(employeeId);
 			attendance.setNumberOfDaysPresent(1);
 			EmployeeDetailsDatabase.getInstance().insertAttendance(attendance);
+		}
+	}
+
+	public void toViewAttendance() {
+		for (Attendance attendance : attendanceList) {
+			System.out.printf("\n%-10s %-10s %-15s %-15s", attendance.getMonth(), attendance.getYear(),
+					attendance.getEmployeeId(), attendance.getNumberOfDaysPresent());
+		}
+	}
+
+	public void toViewAttendance(String employeeId) {
+		for (Attendance attendance : attendanceList) {
+			if (attendance.getEmployeeId().equals(employeeId)) {
+				System.out.println(attendance.getMonth() + "\t" + attendance.getYear() + "\t\t"
+						+ attendance.getNumberOfDaysPresent());
+			}
 		}
 	}
 

@@ -6,11 +6,13 @@ import View.ManageSalary;
 public class EmployeeMenuController {
 	private ManageAttendance manageAttendance;
 	private ManageSalary manageSalary;
-	public EmployeeMenuController(){
+
+	public EmployeeMenuController() {
 		manageAttendance = new ManageAttendance();
 		manageSalary = new ManageSalary();
 	}
-	public int checkOption(String employeeId,String option) {
+
+	public int checkOption(String employeeId, String option) {
 		switch (option) {
 		case "1":
 			manageAttendance.checkIn(employeeId);
@@ -19,7 +21,7 @@ public class EmployeeMenuController {
 			manageSalary.viewPaySlip(employeeId);
 			break;
 		case "3":
-			manageAttendance.viewAttendance(employeeId);;
+			manageAttendance.viewAttendance(employeeId);
 			break;
 		case "4":
 			System.out.println("\nThank you!\n");
@@ -29,6 +31,5 @@ public class EmployeeMenuController {
 		}
 		return 1;
 	}
-	
-	
+
 }

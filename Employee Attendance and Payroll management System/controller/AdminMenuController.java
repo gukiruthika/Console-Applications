@@ -8,11 +8,13 @@ public class AdminMenuController {
 	private ManageEmployeeDetails manageEmployeeDetails;
 	private ManageAttendance manageAttendance;
 	private ManageSalary manageSalary;
-	public AdminMenuController(){
+
+	public AdminMenuController() {
 		manageEmployeeDetails = new ManageEmployeeDetails();
 		manageAttendance = new ManageAttendance();
 		manageSalary = new ManageSalary();
 	}
+
 	public int checkOption(String option) {
 		switch (option) {
 		case "1":
