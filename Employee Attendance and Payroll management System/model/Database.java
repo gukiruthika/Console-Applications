@@ -92,21 +92,21 @@ public class Database {
 
 	}
 	
-	public int getData(String query) {
-		
-		try {
-			ResultSet resultSet = getConnection().executeQuery(query);
-//			if (tableName.equals("employeeDetails")) {
-				while (resultSet.next()) {
-					return resultSet.getInt("count");
-				}
-				
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return 0;
-	}
+//	public int getData(String query) {
+//		
+//		try {
+//			ResultSet resultSet = getConnection().executeQuery(query);
+////			if (tableName.equals("employeeDetails")) {
+//				while (resultSet.next()) {
+//					return resultSet.getInt("count");
+//				}
+//				
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		return 0;
+//	}
 
 }
