@@ -49,12 +49,12 @@ public class Expression {
 					number = number * 10 + (Double.valueOf(term[i]));
 				}
 				if (i < term.length - 1 && type[i + 1] == "Point") {   //check for decimal numbers
-					int dp = 0;
+					int decimalPoint = 0;
 					++i;
 					while (i < term.length - 1 && (type[i + 1] == "Number")) {
 						++i;
-						++dp;
-						number = number + (Double.valueOf(term[i]) / (10 * dp));
+						++decimalPoint;
+						number = number + (Double.valueOf(term[i]) / (10 * decimalPoint));
 					}
 				}
 
