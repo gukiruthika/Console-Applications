@@ -9,8 +9,8 @@ import model.SalaryDetails;
 public class ManageSalary {
 	private SalaryController salaryController;
 	private InputController inputController;
-	
-	public ManageSalary(){
+
+	public ManageSalary() {
 		salaryController = new SalaryController();
 		inputController = new InputController();
 
@@ -18,7 +18,7 @@ public class ManageSalary {
 
 	public void updateAllSalary() {
 		int month = Integer.valueOf(inputController.getInput("month (MM)", "(0?[1-9]|1[012])"));
-		int year = Integer.valueOf(inputController.getInput("year (YYYY)", "\\d{4}")); 
+		int year = Integer.valueOf(inputController.getInput("year (YYYY)", "\\d{4}"));
 		salaryController.toUpdateAllSalary(month, year);
 		System.out.print("Salary updated Successfully!!");
 	}
@@ -28,7 +28,6 @@ public class ManageSalary {
 				"Net Salary", "Number of Days Present");
 		salaryController.toViewSalary();
 	}
-
 
 	public void viewPaySlip(String employeeId) {
 		int month = Integer.valueOf(inputController.getInput("month (MM)", "(0[1-9]|1[012])"));

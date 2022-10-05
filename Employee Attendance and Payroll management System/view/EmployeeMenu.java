@@ -17,16 +17,16 @@ public class EmployeeMenu {
 	}
 
 	private void displayOptions(String employeeId) {
-			System.out.println("""
-					
-					
-					1) Check in
-					2) Pay Slip
-					3) Attendance details
-					4) Log out
-					Enter option..
-					""");
-			if(menuController.checkOption(employeeId,scan.nextLine())==1)
-				displayOptions(employeeId);
+		System.out.println("""
+
+
+				1) Check in
+				2) Pay Slip
+				3) Attendance details
+				4) Log out
+				Enter option..
+				""");
+		if (menuController.checkOption(employeeId, scan.nextLine()) == 1)
+			displayOptions(employeeId);
 	}
 }
